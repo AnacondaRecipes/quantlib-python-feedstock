@@ -1,18 +1,16 @@
 {% set name = "QuantLib-python" %}
 {% set version = "1.29" %}
-{% set sha256 = "1671fcd0c49363e38c3a69184b6938fa0df8718489ff6b07503dc056b0e2d10a" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  fn: {{ name }}-{{ version }}.tar.gz
   url: https://github.com/lballabio/QuantLib-SWIG/archive/refs/tags/QuantLib-SWIG-v{{ version }}.tar.gz
-  sha256: {{ sha256 }}
+  sha256: 1671fcd0c49363e38c3a69184b6938fa0df8718489ff6b07503dc056b0e2d10a
 
 build:
-  number: 3
+  number: 0
   skip: true  # [win and vc<14]
 
 requirements:
@@ -25,14 +23,13 @@ requirements:
     - swig
   host:
     - python
-    - pip
-    - boost-cpp
-    - quantlib =={{ version }}
-
+    - setuptools  # [win]
+    - boost-cpp  1.73.0
+    - quantlib 
   run:
     - python
-    - quantlib  # [not win]
-    - boost-cpp  # [win]
+    - quantlib
+    - boost-cpp  >=1.73.0,<2.0a0
 
 test:
   source_files:

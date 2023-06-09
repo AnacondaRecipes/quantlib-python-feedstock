@@ -1,4 +1,5 @@
 #!/bin/bash
+echo "Building ${PKG_NAME}."
 
 ./autogen.sh
 ./configure PYTHON CXXFLAGS='-O1'
