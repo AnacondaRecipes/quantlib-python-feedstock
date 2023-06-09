@@ -23,7 +23,9 @@ requirements:
     - swig
   host:
     - python
-    - setuptools  # [win]
+    - setuptools
+    - pip
+    - wheel
     - boost-cpp  1.73.0
     - quantlib 
   run:
