@@ -27,7 +27,8 @@ requirements:
     - pip
     - wheel
     - boost-cpp  1.73.0
-    - quantlib 
+    - quantlib
+    - libboost  # [win]
   run:
     - python
     - quantlib
