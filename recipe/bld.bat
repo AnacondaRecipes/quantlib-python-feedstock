@@ -1,9 +1,9 @@
-set BOOST_ROOT=%LIBRARY_PREFIX%
-set QL_DIR=%LIBRARY_PREFIX%
+set BOOST_ROOT=%LIBRARY_LIB%
+set QL_DIR=%LIBRARY_LIB%
 
-echo "BOOST_VER: %BOOST_VER%"
-echo "VC_VER: %VC_VER%"
-copy "%LIBRARY_PREFIX%\libboost_serialization.lib" "%LIBRARY_PREFIX%\libboost_serialization-vc141-mt-x64-1_73.lib"
+REM echo "BOOST_VER: %BOOST_VER%"
+REM echo "VC_VER: %VC_VER%"
+copy "%LIBRARY_LIB%\libboost_serialization.lib" "%LIBRARY_LIB%\libboost_serialization-vc141-mt-x64-1_73.lib"
 if %ERRORLEVEL% GEQ 1 exit 1
 
 cd Python
