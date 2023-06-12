@@ -6,4 +6,4 @@ echo "Building ${PKG_NAME}."
 make -C Python
 make -C Python check
 make -C Python wheel
-pip install Python/dist/QuantLib-*.whl
+${PYTHON} -m pip install Python/dist/QuantLib-*.whl --no-deps --ignore-installed --no-build-isolation -vvv

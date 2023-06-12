@@ -1,14 +1,16 @@
-set BOOST_ROOT=%LIBRARY_LIB%
-set QL_DIR=%LIBRARY_LIB%
+echo "Building %PKG_NAME%."
 
-REM echo "BOOST_VER: %BOOST_VER%"
-REM echo "VC_VER: %VC_VER%"
+set QL_DIR=%LIBRARY_LIB%
 copy "%LIBRARY_LIB%\libboost_serialization.lib" "%LIBRARY_LIB%\libboost_serialization-vc141-mt-x64-1_73.lib"
 if %ERRORLEVEL% GEQ 1 exit 1
 
 cd Python
-python setup.py wrap
-python setup.py build
-python setup.py test
-python setup.py install
+%PYTHON% setup.py wrap
+if %ERRORLEVEL% GEQ 1 exit 1
+%PYTHON% setup.py build
+if %ERRORLEVEL% GEQ 1 exit 1
+%PYTHON% setup.py test
+if %ERRORLEVEL% GEQ 1 exit 1
+%PYTHON% setup.py install
+if %ERRORLEVEL% GEQ 1 exit 1
 
