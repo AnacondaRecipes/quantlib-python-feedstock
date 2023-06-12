@@ -12,6 +12,9 @@ source:
 build:
   number: 0
   skip: true  # [win and vc<14]
+  script_env:  # [win]
+    - BOOST_VER = {{ boost }}  # [win]
+    - VC_VER = {{ vc }}  # [win]
 
 requirements:
   build:
