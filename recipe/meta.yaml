@@ -51,7 +51,7 @@ about:
     is a free/open-source library for modeling, trading, and risk management 
     in real-life.
   doc_url: https://www.quantlib.org
-  dev_url: https://github.com/lballabio/QuantLib
+  dev_url: https://github.com/lballabio/QuantLib-SWIG
 
 extra:
   recipe-maintainers:
