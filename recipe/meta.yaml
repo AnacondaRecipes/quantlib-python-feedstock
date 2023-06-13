@@ -26,8 +26,8 @@ requirements:
     - setuptools
     - pip
     - wheel
-    - boost-cpp  1.73.0
-    - quantlib  {{ version }}
+    - boost-cpp 1.73.0
+    - quantlib {{ version }}
   run:
     - python
     - quantlib
