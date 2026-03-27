@@ -56,5 +56,9 @@ about:
   dev_url: https://github.com/lballabio/QuantLib-SWIG
 
 extra:
-  recipe-maintainers:
-    - timkpaine
+  anaconda-services:
+    ref:  https://anaconda.zendesk.com/agent/tickets/38602
+    reason: "Requested by customer"
+    recipe-maintainers:
+      - anaobi
+      - timkpaine
