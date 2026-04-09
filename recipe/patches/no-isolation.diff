@@ -1,0 +1,21 @@
+--- Python/Makefile.in	2024-11-11 10:24:23.014415827 -0800
++++ Python/Makefile.in	2024-11-11 10:21:09.902675197 -0800
+@@ -443,7 +443,7 @@
+ @BUILD_PYTHON_TRUE@@HAVE_PYTHON_TRUE@all-local: .build-stamp
+
+ @BUILD_PYTHON_TRUE@@HAVE_PYTHON_TRUE@.build-stamp: src/QuantLib/quantlib_wrap.cpp src/QuantLib/QuantLib.py setup.py
+-@BUILD_PYTHON_TRUE@@HAVE_PYTHON_TRUE@	CXXFLAGS="$(CXXFLAGS) $(CXXWARNINGFLAGS)" CC="$(CC)" CXX="$(CXX)" $(PYTHON) -m build --wheel
++@BUILD_PYTHON_TRUE@@HAVE_PYTHON_TRUE@	CXXFLAGS="$(CXXFLAGS) $(CXXWARNINGFLAGS)" CC="$(CC)" CXX="$(CXX)" $(PYTHON) -m build --wheel --no-isolation
+ @BUILD_PYTHON_TRUE@@HAVE_PYTHON_TRUE@	rm -f LICENSE.TXT
+ @BUILD_PYTHON_TRUE@@HAVE_PYTHON_TRUE@	touch .build-stamp
+
+--- Python/Makefile.am	2024-11-11 10:24:31.128696360 -0800
++++ Python/Makefile.am	2024-11-11 10:21:05.759529034 -0800
+@@ -9,7 +9,7 @@
+ all-local: .build-stamp
+
+ .build-stamp: src/QuantLib/quantlib_wrap.cpp src/QuantLib/QuantLib.py setup.py
+-	CXXFLAGS="$(CXXFLAGS) $(CXXWARNINGFLAGS)" CC="$(CC)" CXX="$(CXX)" $(PYTHON) -m build --wheel
++	CXXFLAGS="$(CXXFLAGS) $(CXXWARNINGFLAGS)" CC="$(CC)" CXX="$(CXX)" $(PYTHON) -m build --wheel --no-isolation
+ 	rm -f LICENSE.TXT
+ 	touch .build-stamp
