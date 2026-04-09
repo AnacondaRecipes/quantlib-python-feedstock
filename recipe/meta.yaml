@@ -31,7 +31,7 @@ requirements:
     - pip
     - wheel
     - python-build  # [unix]
-    - libboost-devel
+    - libboost-devel {{ libboost }} 
     - quantlib {{ version }}
   run:
     - python
