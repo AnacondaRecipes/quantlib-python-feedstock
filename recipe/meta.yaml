@@ -1,13 +1,16 @@
 {% set name = "QuantLib-python" %}
-{% set version = "1.29" %}
+{% set version = "1.41" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://github.com/lballabio/QuantLib-SWIG/archive/refs/tags/QuantLib-SWIG-v{{ version }}.tar.gz
-  sha256: 1671fcd0c49363e38c3a69184b6938fa0df8718489ff6b07503dc056b0e2d10a
+  url: https://github.com/lballabio/QuantLib-SWIG/releases/download/v{{ version }}/QuantLib-SWIG-{{ version }}.tar.gz
+  sha256: fa31023207937616ca0f880eda774b6a2273ba6274e776ee9bf631ddc6bf54b8
+  patches:
+    # Prevent python-build from creating an isolated venv and pulling deps from PyPI.
+    - patches/no-isolation.diff  # [unix]
 
 build:
   number: 0
@@ -26,12 +29,12 @@ requirements:
     - setuptools
     - pip
     - wheel
-    - boost-cpp 1.73.0
+    - python-build  # [unix]
+    - libboost-devel
     - quantlib {{ version }}
   run:
     - python
     - quantlib
-    - boost-cpp >=1.73.0,<2.0a0
 
 test:
   imports:
