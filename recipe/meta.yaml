@@ -14,7 +14,6 @@ source:
 
 build:
   number: 0
-  skip: true  # [win and vc<14]
 
 requirements:
   build:
@@ -34,7 +33,7 @@ requirements:
     - quantlib {{ version }}
   run:
     - python
-    - quantlib
+    - quantlib  # [not win]
 
 test:
   imports:
