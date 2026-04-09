@@ -39,9 +39,11 @@ test:
   imports:
     - QuantLib
   source_files:
-    - Python/test/*
+    - Python/test/
+  requires:
+    - pytest
   commands:
-    - python Python/test/QuantLibTestSuite.py
+    - pytest Python/test/ -v
 
 about:
   home: https://github.com/lballabio/QuantLib
