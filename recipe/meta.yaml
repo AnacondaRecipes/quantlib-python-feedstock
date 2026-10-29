@@ -11,9 +11,14 @@ source:
   patches:
     # Prevent python-build from creating an isolated venv and pulling deps from PyPI.
     - patches/no-isolation.diff  # [unix]
+    # setup.py derives the MSVC linker machine type from pointer size alone,
+    # so a win-arm64 build passes /machine:x64 to link.exe while cl.exe emits
+    # ARM64 objects, failing with LNK1112. Derive it from the target platform.
+    # Scoped to win-arm64 so existing x64/unix outputs are unaffected.
+    - patches/win-arm64-machine-type.diff  # [win and arm64]
 
 build:
-  number: 0
+  number: 1
 
 requirements:
   build:

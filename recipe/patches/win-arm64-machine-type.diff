@@ -1,0 +1,22 @@
+--- a/Python/setup.py
++++ b/Python/setup.py
+@@ -165,11 +165,15 @@
+ 
+     if compiler == "msvc":
+ 
+-        dbit = round(math.log(sys.maxsize, 2) + 1)
+-        if dbit == 64:
+-            machinetype = "/machine:x64"
++        target_platform = sysconfig.get_platform().lower()
++        if "arm64" in target_platform or "aarch64" in target_platform:
++            machinetype = "/machine:arm64"
+         else:
+-            machinetype = "/machine:x86"
++            dbit = round(math.log(sys.maxsize, 2) + 1)
++            if dbit == 64:
++                machinetype = "/machine:x64"
++            else:
++                machinetype = "/machine:x86"
+         extra_link_args = ["/subsystem:windows", machinetype]
+         if is_debug_quantlib():
+             extra_link_args += ["/DEBUG"]
